@@ -1,0 +1,62 @@
+<div class="alert alert-success" role="alert" *ngIf="showSucessMessage">
+    Created Successfully!
+</div>
+<div class="alert alert-danger" *ngIf="serverErrorMessages">
+  Failed to Create!
+</div>
+<form class="was-validated" #createForm="ngForm" (ngSubmit)="createForm.valid && onSubmitIncident(createForm)">
+    
+    <div class="form-group">
+        <label for="validationTextarea">Your Email.</label>
+        <textarea  class="form-control" id="exampleFormControlTextarea1" rows="1" type="text" #submittedBy="ngModel" 
+          [(ngModel)]="incidentService.incidentSelect.submittedBy" 
+          name="submittedBy" placeholder="Enter Your Email ID.."></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="validationTextarea">Your Issue.</label>
+        <textarea  class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" #issue="ngModel" 
+            [(ngModel)]="incidentService.incidentSelect.issue" 
+            name="issue" placeholder="issue"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="validationTextarea">Select Department  </label>  
+    </div>
+    <div class="form-group">
+        <select id="disabledSelect" class="form-control"#submittedTo="ngModel" 
+        [(ngModel)]="incidentService.incidentSelect.submittedTo" 
+        name="submittedTo">
+            <option>HR</option>
+            <option>IT</option>
+            <option>Facility</option>
+            <option>Account</option>
+            <option>User</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="validationTextarea">Select Place  </label>  
+    </div>
+    <div class="form-group">
+        <select id="disabledSelect" class="form-control"#submittedFrom="ngModel" 
+        [(ngModel)]="incidentService.incidentSelect.submittedFrom" 
+        name="submittedFrom">
+            <option>Quantum</option>
+            <option>Eureka</option>
+            <option>Bangalore</option>
+            <option>Boston</option>
+            <option>Pune</option>
+            <option>Other</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Attach a File</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <button type="submit" class="btn btn-primary float-sm-left">Create</button>      
+</form>
+    
+  

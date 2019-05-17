@@ -1,0 +1,116 @@
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<!-- Navbar -->
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Collapsed content</h5>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+<div *ngIf="!user" class="card text-center">
+    <h6 class="card-header">
+QTicketing System    </h6>
+    <div class="card-block">
+      <h4 class="card-title">Sign in with</h4>
+      <p class="card-text"></p>
+    </div>
+    <div class="card-block">
+      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+    </div>
+  </div>
+<div *ngIf="user" class="card text-center">
+<div class="row">
+<div class="col-lg-4">
+<div class="card card-profile">
+<div style="background-image: url(https://demo.bootstrapious.com/admin-premium/1-4-5/img/photos/paul-morris-116514-unsplash.jpg);" class="card-header"></div>
+<div class="card-body text-center"><img class="img-rounded" alt="Cinque Terre" src="{{ user.photoUrl }}">
+  <h3 class="mb-3">{{user.name}}</h3>
+  <p class="mb-4">{{user.email}}</p>
+  <button class="btn btn-danger " (click)="signOut()">Sign out</button>
+</div>
+</div>
+
+
+<!-- Message -->
+
+<div class="input-group">
+  <input type="text" placeholder="Message" class="form-control">
+  <div class="input-group-append">
+    <button type="button" class="btn btn-outline-secondary"><i class="fa fa-send"></i></button>
+  </div>
+</div>
+
+</div>
+<div class="col-lg-8">
+<div class="card">
+<div class="card-header">
+    <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleIncidentForm()" >CREATE INCIDENT</button>
+</div>
+<div class="card-header" *ngIf = "showIncidentForm">
+<app-incident></app-incident>
+</div>
+<div class="list-group card-list-group" *ngFor = "let incident of incidents">
+  <!-- <div class="list-group-item py-5">
+    <div class="media">
+      <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png)" class="media-object avatar avatar-md mr-3"></div>
+      <div class="media-body">
+        <div class="media-heading"><small class="float-right">10 min</small>
+          <h5>John Doe</h5>
+        </div>
+        <div class="text-muted text-small">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</div>
+        <div class="media-list">
+          <div class="media mt-4">
+            <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar3.png)" class="media-object avatar mr-3"></div>
+            <div class="media-body text-muted text-small"><strong class="text-dark">Serenity Mitchelle: </strong>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream.</div>
+          </div>
+          <div class="media mt-4">
+            <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar4.png)" class="media-object avatar mr-3"></div>
+            <div class="media-body text-muted text-small"><strong class="text-dark">Tony O'Brian: </strong>His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+ 
+  <div class="card bg-info text-white">
+    <div class="card-body">
+      <h5 class="card-title">{{incident.currentStatus}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{incident.time}}</h6>
+      <p class="card-text">{{incident.issue}}</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  <div class="alert alert-dark" role="alert">
+    <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleComments()" >Comments:-</button>
+  </div>
+      
+  <div class="card" *ngIf = "showComments">
+    <div class="card-body"  *ngFor = "let comment of incident.comments">
+      <blockquote class="blockquote mb-0">
+        <p>{{comment.comment}}</p>
+        <footer class="blockquote-footer float-sm-right">Commented By:- <cite title="Source Title">{{comment.email}}</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card-header">
+      <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleCommentForm()" >Comment</button>
+  </div>
+  <div class="list-group-item " *ngIf = "showCommentForm">
+    <app-comment></app-comment>
+  </div>
+  
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

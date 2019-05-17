@@ -1,0 +1,17 @@
+<div class="alert alert-success" role="alert" *ngIf="showSucessMessage">
+    Created Successfully!
+</div>
+<div class="alert alert-danger" *ngIf="serverErrorMessages">
+  Failed to Create!
+</div>
+<form class="was-validated"  #createForm="ngForm" (ngSubmit)="createForm.valid && onSubmitComment(createForm)">
+  <div class="form-group" style="position:relative">
+    <label for="validationTextarea">Comment Down...</label>
+    <textarea  class="form-control" style="position:relative; width:100%" id="exampleFormControlTextarea1" rows="2" type="text" #comment="ngModel" 
+      [(ngModel)]="commentService.commentSelect.comment" 
+      name="comment" placeholder="Place your comments here .."></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary float-sm-left">POST</button>      
+</form>
+    
+  
