@@ -40,20 +40,21 @@ const IncidentSchema = mongoose.Schema ({
     type : Date, 
     default: Date.now 
   },
-  comments:[{
-    email:{
-      type:String,
-      required:true
-    },
-    comment:{
-      type:String,
-      default:'Default Comment!'
-    },
-    time:{
-      type:Date,
-      default:Date.now
+  comments:[
+    {
+      email:{
+        type:String
+      },
+      comment:{
+        type:String,
+        default:'Default Comment!'
+      },
+      time:{
+        type:String,
+        default:Date.now
+      }
     }
-  }],
+  ],
 
   time : {
     type : Date, 

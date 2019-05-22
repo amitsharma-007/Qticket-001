@@ -40,7 +40,6 @@ QTicketing System    </h6>
 
 
 <!-- Message -->
-
 <div class="input-group">
   <input type="text" placeholder="Message" class="form-control">
   <div class="input-group-append">
@@ -54,60 +53,11 @@ QTicketing System    </h6>
 <div class="card-header">
     <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleIncidentForm()" >CREATE INCIDENT</button>
 </div>
-<div class="card-header" *ngIf = "showIncidentForm">
+<div class="card-header" *ngIf = "hideIncidentForm">
 <app-incident></app-incident>
 </div>
-<div class="list-group card-list-group" *ngFor = "let incident of incidents">
-  <!-- <div class="list-group-item py-5">
-    <div class="media">
-      <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar2.png)" class="media-object avatar avatar-md mr-3"></div>
-      <div class="media-body">
-        <div class="media-heading"><small class="float-right">10 min</small>
-          <h5>John Doe</h5>
-        </div>
-        <div class="text-muted text-small">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections</div>
-        <div class="media-list">
-          <div class="media mt-4">
-            <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar3.png)" class="media-object avatar mr-3"></div>
-            <div class="media-body text-muted text-small"><strong class="text-dark">Serenity Mitchelle: </strong>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream.</div>
-          </div>
-          <div class="media mt-4">
-            <div style="background-image: url(https://bootdey.com/img/Content/avatar/avatar4.png)" class="media-object avatar mr-3"></div>
-            <div class="media-body text-muted text-small"><strong class="text-dark">Tony O'Brian: </strong>His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
- 
-  <div class="card bg-info text-white">
-    <div class="card-body">
-      <h5 class="card-title">{{incident.currentStatus}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{incident.time}}</h6>
-      <p class="card-text">{{incident.issue}}</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
-  </div>
-  <div class="alert alert-dark" role="alert">
-    <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleComments()" >Comments:-</button>
-  </div>
-      
-  <div class="card" *ngIf = "showComments">
-    <div class="card-body"  *ngFor = "let comment of incident.comments">
-      <blockquote class="blockquote mb-0">
-        <p>{{comment.comment}}</p>
-        <footer class="blockquote-footer float-sm-right">Commented By:- <cite title="Source Title">{{comment.email}}</cite></footer>
-      </blockquote>
-    </div>
-  </div>
-  <div class="card-header">
-      <button type="button" class="btn btn-secondary float-sm-left"  (click)="toggleCommentForm()" >Comment</button>
-  </div>
-  <div class="list-group-item " *ngIf = "showCommentForm">
-    <app-comment></app-comment>
-  </div>
-  
+<div class="list-group card-list-group" >
+  <app-comment *ngFor = "let incident of incidents"  [incident]="incident" (pushComment)="addComment($event)"></app-comment>
 </div>
 </div>
 </div>

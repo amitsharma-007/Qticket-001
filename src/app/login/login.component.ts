@@ -5,6 +5,10 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LogService } from '../log.service';
+import { Comment } from '../services/appModels';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -14,15 +18,15 @@ import { LogService } from '../log.service';
 export class LoginComponent implements OnInit {
   user: SocialUser;
   serverErrorMessages: string;
+  hideIncidentForm:boolean;
+  
   incidents;
 
-  public showIncidentForm:boolean = false;
-  public showCommentForm:boolean = false;
-  public showComments:boolean = false;  
 
   constructor(private authService:AuthService,private router:Router,private logService:LogService) { }
 
   ngOnInit() {
+    
     this.authService.authState.subscribe((user) => {
     //  res=>{ 
     this.user = user;
@@ -56,23 +60,23 @@ export class LoginComponent implements OnInit {
         
       }
     );
+
+    this.hideIncidentForm = false;
   }
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
 
   }
 
-
   signOut(): void {
     this.authService.signOut();
   }
-  toggleIncidentForm() {
-    this.showIncidentForm = !this.showIncidentForm;
-  }
-  toggleCommentForm() {
-    this.showCommentForm = !this.showCommentForm;
-  }
-  toggleComments() {
-    this.showComments = !this.showComments;
-  }
+   toggleIncidentForm(){
+     this.hideIncidentForm = !this.hideIncidentForm;
+   }
+
+   addComment(comment) {
+     console.log(this.incidents);
+     this.incidents[0].comments.push(comment);
+   } 
 }

@@ -4,6 +4,7 @@ import { Comment } from './appModels';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import { PostComment } from '../services/appModels'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class IncidentService {
     comments:{
       email:'',
       comment:'',
-      time:new Date().toLocaleDateString()
+      time:''
     },
 
     time : new Date().toLocaleDateString()
@@ -30,10 +31,10 @@ export class IncidentService {
 
   addIncident(incident:Incident){
     return this.http.post(environment.incidents+'/add',incident);
-    }
+}
 
-    createComment(incident:Incident, id){
-      return this.http.post(environment.incidents+'/createcomment'+id,incident);
-    }
+  createComment(comment:PostComment, id){
+    return this.http.post(environment.incidents+'/createcomment/'+id,comment);
+  }
 
 }

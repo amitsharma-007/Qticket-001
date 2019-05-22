@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { IncidentComponent } from './components/incident/incident.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { AdminviewComponent } from './components/adminview/adminview.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminPeopleViewComponent } from './components/admin-people-view/admin-people-view.component';
+import { AdminIncidentComponent } from './components/admin-incident/admin-incident.component';
 
 
 const config = new AuthServiceConfig([
@@ -32,7 +36,11 @@ export function provideConfig() {
     LoginComponent,
     HomeComponent,
     IncidentComponent,
-    CommentComponent
+    CommentComponent,
+    AdminviewComponent,
+    AdminDashboardComponent,
+    AdminPeopleViewComponent,
+    AdminIncidentComponent
   ],
   imports: [
     BrowserModule,

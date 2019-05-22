@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 export class CommentService {
 
   commentSelect :Comment = {
+    id:'',
     email:'',
     comment:'',
     time : new Date().toLocaleDateString()
