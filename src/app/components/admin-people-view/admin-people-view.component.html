@@ -1,6 +1,45 @@
-
-<button type="button" class="btn btn-primary btn-lg btn-block">{{user.name}}</button>
-
-
-
-
+<div class="card bg-info text-white">
+    <div class="card-body">
+        <button class="btn btn-secondary float-sm-left" (click)="userDetail=!userDetail">{{user.name}}</button>
+    </div>
+    <div class="card-body" *ngIf="userDetail">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                  <span class="badge badge-dark" style="min-width:200px">Name:</span>
+                  <span class="badge badge-dark" style="min-width:200px">
+                    {{user.name}}
+                  </span>
+              </li>
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                <span class="badge badge-dark" style="min-width:200px">Email:</span>
+                <span class="badge badge-dark" style="min-width:200px">
+                    {{user.email}}
+                </span>
+              </li>
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                  <span class="badge badge-dark" style="min-width:200px">About:</span>
+                  <span class="badge badge-dark" style="min-width:200px">
+                      {{user.about}}
+                  </span>
+              </li>
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                  <span class="badge badge-dark" style="min-width:200px">User Department:</span>
+                  <span class="badge badge-dark" style="min-width:200px">
+                      {{user.userDepartment}}
+                  </span>
+              </li>
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                  <span class="badge badge-dark" style="min-width:200px">Admin Status:</span>
+                  <span class="badge badge-dark" style="min-width:200px">
+                      {{user.adminStatus}}
+                  </span>
+                </li>
+              <li class="list-group-item" style="background-color:DodgerBlue;">
+                  <button type="button" class="btn btn-secondary">Edit User</button>
+                  <button type="button" class="btn btn-secondary">Remove User</button>
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -9,11 +9,15 @@ import { ShowSection,Incident, Comment, PostComment, User } from '../../services
   styleUrls: ['./admin-people-view.component.css']
 })
 export class AdminPeopleViewComponent implements OnInit {
+
+  userDetail:boolean;
+  
   @Input() user:User;
 
   constructor() { }
 
   ngOnInit() {
+    this.userDetail = false;
   }
 
 }

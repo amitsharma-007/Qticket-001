@@ -9,10 +9,13 @@ import { AdminserviceService } from '../../services/adminservice.service';
 export class AdminviewComponent implements OnInit {
   users;
   incidents;
+  peopleDetail:boolean;
+
 
   constructor(private adminService: AdminserviceService) { }
 
   ngOnInit() {
+    this.peopleDetail = false;
 
     //fetch all users
     this.adminService.getUsers().subscribe(res =>{

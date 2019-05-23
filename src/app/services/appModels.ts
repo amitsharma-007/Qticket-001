@@ -29,6 +29,18 @@ export class Incident{
     time:string;
 }
 
+
+export class UpdateIncident{
+    submittedBy:string;
+    submittedTo:string;
+    submittedFrom:string;
+    priority:string;
+    currentStatus:string;
+    assignedTo:string;
+    issue:string;
+    editedAt:string;
+}
+
 export class Comment{
     id:string;
     email:string;

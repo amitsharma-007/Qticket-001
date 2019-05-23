@@ -18,7 +18,7 @@ export class CommentComponent implements OnInit {
   hideme:ShowSection[];
   _id:string;
   postComment:PostComment;
-  constructor(private commentService: CommentService, private incidentService:IncidentService) { }
+  constructor( private commentService: CommentService, private incidentService:IncidentService) { }
   hide:boolean;
   hideCommentForm:boolean;
   
